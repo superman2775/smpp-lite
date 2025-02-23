@@ -171,15 +171,15 @@ function snakeGame() {
         if (snake.direction !== 'DOWN') {
         snake.direction = 'UP';}
       break;
-      case "ArrowDown": 
+      case "ArrowDown":
         if (snake.direction !== 'UP') {
         snake.direction = 'DOWN';}
       break;
-      case "ArrowLeft": 
+      case "ArrowLeft":
         if (snake.direction !== 'RIGHT') {
         snake.direction = 'LEFT';}
       break;
-      case "ArrowRight": 
+      case "ArrowRight":
         if (snake.direction !== 'LEFT') {
         snake.direction = 'RIGHT';}
       break;
@@ -202,13 +202,13 @@ function snakeGame() {
   const queue = new Queue();
   document.addEventListener('keydown', event => {
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-      if (queue.size() < 3 && queue.peek() != event.key) { 
+      if (queue.size() < 3 && queue.peek() != event.key) {
         queue.enqueue(event.key);
       }
       event.preventDefault();
     }
   });
-  
+
 }
 
 //code taken from https://www.geeksforgeeks.org/implementation-queue-javascript/
@@ -219,7 +219,7 @@ class Queue {
   }
 
   enqueue(element) {
-    this.items.push(element); 
+    this.items.push(element);
   }
 
   dequeue() {

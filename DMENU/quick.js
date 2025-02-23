@@ -240,6 +240,7 @@ if (topNav && document.querySelector("#dmenutooltip") == undefined) {
     do_qm(quickButton);
   })
 
+
   const goGlChatButton = document.createElement("button");
   goGlChatButton.title="Global chat (chat met iedereen die de extensie gebruikt)"
   goGlChatButton.id = "global_chat_button"
