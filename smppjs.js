@@ -464,7 +464,10 @@ function main() {
       load()
     });
 
-    createWidgetEditModeButton(document.querySelector(".topnav"));
+    createQuickMenuButton();
+    createGCButton();
+    createWidgetEditModeButton();
+    //TODO: fix the other buttons here.
   }
   apply()
 }
