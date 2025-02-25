@@ -77,5 +77,5 @@ function createGCButton() {
 `
   goGlChatButton.addEventListener("click",open_global_chat)
 
-  topNav.insertBefore(goGlChatButton, topNav.querySelector(".topnav__btn--push-right"));
+  topNav.insertBefore(goGlChatButton, topNav.childNodes[2]);
 }
