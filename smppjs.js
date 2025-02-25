@@ -461,10 +461,8 @@ function main() {
 
   createWidgetSystem();
 
-  let logoutButton = document.getElementsByClassName("js-btn-logout")[0]
-  if (logoutButton) {
-    logoutButton.innerHTML = changeLogoutText();
-  }
+  let logoutButton = document.querySelector(".js-btn-logout");
+  if (logoutButton) logoutButton.innerHTML = changeLogoutText();
 
   let onHomePage = document.getElementById("container") !== null;
   if (createSettings()) {
