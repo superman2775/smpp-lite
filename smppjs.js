@@ -79,20 +79,10 @@ async function apply() {
   console.log(settingsData)
   const profileSelect = settingsData.profile
   const backgroundLink = settingsData.backgroundlink
-  const halte = settingsData.halte
   const overwrite_theme = settingsData.overwrite_theme;
-  const loc = settingsData.location;
-  const blurvalue = settingsData.blur;
-  const weatherAmount = settingsData.weatherAmount;
   const shownews = settingsData.shownews;
-  const showsnake = settingsData.showsnake;
-  const showflappy = settingsData.showflappy;
   var show_scores = settingsData.show_scores;
   var showplanner = settingsData.showplanner;
-  var IsBig = settingsData.isbig;
-  var weatherSelector = settingsData.weatherSelector;
-  var username_override = settingsData.username_override;
-  var show_plant = settingsData.show_plant;
   var enableanimations = settingsData.enableanimations;
   changeFont()
   set_theme("default");
@@ -105,24 +95,6 @@ async function apply() {
     settingsData = get_config()
     settingsData.showplanner = true
     showplanner = true
-    set_config(settingsData)
-  }
-  if (IsBig == undefined) {
-    settingsData = get_config()
-    settingsData.isbig = true
-    IsBig = true
-    set_config(settingsData)
-  }
-  if (show_plant == undefined) {
-    settingsData = get_config()
-    settingsData.show_plant = true
-    show_plant = true
-    set_config(settingsData)
-  }
-  if (weatherSelector == undefined) {
-    settingsData = get_config()
-    settingsData.weatherSelector = 0
-    weatherSelector = 0
     set_config(settingsData)
   }
   if (enableanimations == undefined) {
@@ -189,11 +161,6 @@ async function apply() {
         if (!shownews) {
       centralContainer.innerHTML = ' '
     }
-    discordpopup()
-    if (rightContainer) {
-      rightContainer.innerHTML = ""
-      rightContainer.style.display = "none"
-    }
 
 
     if (leftcontainer) {
@@ -203,20 +170,7 @@ async function apply() {
     document.getElementById("leftcontainer") ? document.getElementById("leftcontainer").remove() : "pass"
     document.getElementById("rightcontainer") ? document.getElementById("rightcontainer").remove() : "pass"
     document.getElementById("plannercontainer") ? document.getElementById("plannercontainer").remove() : "pass"
-    document.getElementById("weathercontainer") ? document.getElementById("weathercontainer").remove() : "pass"
-    document.getElementById("delijncontainer") ? document.getElementById("delijncontainer").remove() : "pass"
-    document.getElementById("plantcontainer") ? document.getElementById("plantcontainer").remove() : "pass"
-
-    if (halte) {
-      var DelijnAppElement = document.createElement("div")
-      DelijnAppElement.classList.add("homepage__left")
-      DelijnAppElement.classList.add("smsc-container--left")
-      DelijnAppElement.id = "leftcontainer"
-      var DelijnApp = document.createElement("div")
-      DelijnApp.setAttribute("id", "delijncontainer")
-      DelijnAppElement.appendChild(DelijnApp)
-      container.prepend(DelijnAppElement)
-      createDelijnApp()
+  
     }
     if (showplanner) {
       var PlannerAppElement = document.createElement("div")
@@ -225,42 +179,7 @@ async function apply() {
       PlannerAppElement.setAttribute("id", "plannercontainer")
       container.prepend(PlannerAppElement)
       ShowPlanner(0)
-    }
-    if (show_plant) {
-      var PlantAppElement = document.createElement("div")
-      PlantAppElement.classList.add("homepage__right")
-      PlantAppElement.classList.add("smsc-container--right")
-      PlantAppElement.setAttribute("id", "plantcontainer")
-      container.append(PlantAppElement)
-      start_plant_window()
-    }
-    if (loc != "") {
-      var WeatherAppElement = document.createElement("div")
-      WeatherAppElement.classList.add("homepage__right")
-      WeatherAppElement.classList.add("smsc-container--right")
-      WeatherAppElement.setAttribute("id", "weathercontainer")
-      container.append(WeatherAppElement)
-      await createWeatherApp(loc, IsBig);
-    }
-    if (showsnake) {
-      if (!document.getElementById("weathercontainer")) {
-        var WeatherAppElement = document.createElement("div")
-        WeatherAppElement.classList.add("homepage__right")
-        WeatherAppElement.classList.add("smsc-container--right")
-        WeatherAppElement.setAttribute("id", "weathercontainer")
-        container.append(WeatherAppElement)
-      }
-      creatSnakeApp()
-    }
-    if (showflappy) {
-      if (!document.getElementById("weathercontainer")) {
-        var WeatherAppElement = document.createElement("div")
-        WeatherAppElement.classList.add("homepage__right")
-        WeatherAppElement.classList.add("smsc-container--right")
-        WeatherAppElement.setAttribute("id", "weathercontainer")
-        container.append(WeatherAppElement)
-      }
-      createFlappyApp()
+  
     }
   }
 
@@ -316,34 +235,18 @@ function store() {
   const profileSelect = document.getElementById("profileSelector").value;
   let backgroundFile = document.getElementById("fileInput").files[0];
   const backgroundLink = document.getElementById("backgroundlink").value
-  const halte = document.getElementById("halt").checked;
   const overwrite_theme = Number(document.getElementById("backgroundSlider").value);
-  const loc = document.getElementById("location").value;
   const blur = Number(document.getElementById('mySlider').value);
-  const weatherAmount = Number(document.getElementById('weatherSlider').value);
   const shownews = document.getElementById("shownewselement").checked;
-  const showsnake = document.getElementById('showsnakeelement').checked;
-  const showflappy = document.getElementById('showflappyelement').checked;
-  const isbig = document.getElementById("isbig").checked;
   const showplanner = document.getElementById("showplanner").checked;
-  const weatherSelector = Number(document.getElementById("weatherSelector").value);
-  const show_plant = document.getElementById("show_plant").checked;
   const smpp_logo = document.getElementById("smpp_logo").checked;
   const enableAnimations = document.getElementById("performanceModeTooltip").checked;
   settingsData.profile = profileSelect;
-  settingsData.halte = halte;
   settingsData.overwrite_theme = overwrite_theme;
-  settingsData.location = loc.charAt(0).toUpperCase() + loc.slice(1);
   settingsData.backgroundlink = backgroundLink
   settingsData.blur = blur;
-  settingsData.weatherAmount = weatherAmount;
   settingsData.shownews = shownews;
-  settingsData.showsnake = showsnake;
-  settingsData.showflappy = showflappy
-  settingsData.isbig = isbig;
   settingsData.showplanner = showplanner;
-  settingsData.weatherSelector = weatherSelector;
-  settingsData.show_plant = show_plant;
   settingsData.smpp_logo = smpp_logo;
   settingsData.enableanimations = enableAnimations
   document.getElementById("performanceModeInfo").innerHTML = settingsData.enableanimations ? `Toggle performance mode (disabled)` : `Toggle performance mode (enabled)`
@@ -416,34 +319,20 @@ function load() {
   let settingsData = JSON.parse(window.localStorage.getItem("settingsdata"));
   const profileSelect = document.getElementById("profileSelector");
   const backgroundLink = document.getElementById("backgroundlink");
-  const halte = document.getElementById("halt");
   const overwrite_theme = document.getElementById("backgroundSlider");
   const loc = document.getElementById("location");
   const blur = document.getElementById('mySlider');
-  const weatherSlider = document.getElementById('weatherSlider');
   const shownews = document.getElementById("shownewselement");
-  const showsnake = document.getElementById("showsnakeelement");
-  const showflappy = document.getElementById("showflappyelement");
-  const isbig = document.getElementById("isbig");
   const showplanner = document.getElementById("showplanner");
-  const weatherSelector = document.getElementById("weatherSelector");
-  const show_plant = document.getElementById("show_plant");
   const smpp_logo = document.getElementById("smpp_logo");
   const enableAnimations = document.getElementById("performanceModeTooltip");
   profileSelect.value = settingsData.profile
-  halte.checked = settingsData.halte
   overwrite_theme.value = settingsData.overwrite_theme
   backgroundLink.value = settingsData.backgroundlink
   loc.value = settingsData.location
   blur.value = settingsData.blur
-  weatherSlider.value = settingsData.weatherAmount
   shownews.checked = settingsData.shownews
-  showsnake.checked = settingsData.showsnake
-  showflappy.checked = settingsData.showflappy
-  isbig.checked = settingsData.isbig
   showplanner.checked = settingsData.showplanner
-  weatherSelector.value = settingsData.weatherSelector
-  show_plant.checked = settingsData.show_plant;
   smpp_logo.checked = settingsData.smpp_logo;
   enableAnimations.checked = settingsData.enableanimations;
   document.getElementById("performanceModeInfo").innerHTML = settingsData.enableanimations ? `Toggle performance mode (disabled)` : `Toggle performance mode (enabled)`
