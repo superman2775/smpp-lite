@@ -1,9 +1,9 @@
 {
 	"manifest_version": 3,
-	"name": "Smartschool++",
+	"name": "Smartschool++ light",
 	"version": "3.2.1",
-	"description": "Enhance your Smartschool experience with themes and more",
-	"homepage_url": "https://github.com/sprksoft/smpp",
+	"description": "Enhance your Smartschool experience with themes",
+	"homepage_url": "https://github.com/superman2775/smpp-light",
 	"content_scripts": [
 		{
 			"matches": [
@@ -19,8 +19,6 @@
 				"json.js",
 				"DMENU/quick.js"
 			]
-		},
-		{
 			"matches": [
 				"*://*.smartschool.be/*"
 			],
