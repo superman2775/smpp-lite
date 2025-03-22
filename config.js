@@ -1,22 +1,15 @@
 const default_settings = {
   quicks: [],
   profile: "birb",
-  halte: true,
   overwrite_theme: 0,
-  location: "keerbergen",
-  weatherSelection: 0,
   blur: "2",
   weatherAmount: 0,
   shownews: true,
-  showsnake: false,
-  showflappy: false,
   backgroundlink: "none",
   backgroundfile: "none",
   show_scores: false,
-  isbig: true,
   showplanner: true,
   name_override: null,
-  show_plant: true,
   smpp_logo: true,
   enableanimations: true
 };
