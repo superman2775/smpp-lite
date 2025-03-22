@@ -1,8 +1,8 @@
 # important
-- [ ] 
+- [x] nothing
 
 # not a concern
-- [ ] icons...
+- [x] icons...
 
 # unfixable
 - adding nmbs
